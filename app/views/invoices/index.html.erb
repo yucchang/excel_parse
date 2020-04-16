@@ -1,0 +1,21 @@
+<h1>Invoice List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Invoice No.</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+   <% @invoices.each do |i| %>
+    <tr>
+      <td><%= i.customer %></td>
+      <td><%= i.invocie_no %></td>
+      <td><%= i.date %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
