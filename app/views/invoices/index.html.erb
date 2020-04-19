@@ -1,5 +1,7 @@
 <h1>Invoice List</h1>
 
+<%= link_to 'Upload excel', new_import_invoice_path %>
+
 <table>
   <thead>
     <tr>
@@ -13,7 +15,7 @@
    <% @invoices.each do |i| %>
     <tr>
       <td><%= i.customer %></td>
-      <td><%= i.invocie_no %></td>
+      <td><%= i.invoice_no %></td>
       <td><%= i.date %></td>
     </tr>
     <% end %>
