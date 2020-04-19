@@ -8,15 +8,18 @@
       <th>Customer</th>
       <th>Invoice No.</th>
       <th>Date</th>
+      <th>Function</th>
     </tr>
   </thead>
 
   <tbody>
-   <% @invoices.each do |i| %>
+   <% @invoices.each do |invoice| %>
     <tr>
-      <td><%= i.customer %></td>
-      <td><%= i.invoice_no %></td>
-      <td><%= i.date %></td>
+      <td><%= invoice.customer %></td>
+      <td><%= invoice.invoice_no %></td>
+      <td><%= invoice.date.strftime("%Y-%m-%d") %></td>
+      <td> <%= link_to 'Edit',  edit_invoice_path(invoice) %></td>
+      <td> <%= link_to 'Delete', invoice_path(invoice), method: :delete, data: {confirm: 'Sure to delete this?'} %></td>
     </tr>
     <% end %>
   </tbody>
