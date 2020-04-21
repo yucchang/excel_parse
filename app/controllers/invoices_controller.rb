@@ -7,9 +7,12 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def destroy
-    invoice = Invoice.find(params[:id])
-    invoice.delete if invoice
-    redirect_to invoices_path, notice: 'Invoice removed.'
-  end
+  def show
+  end 
+
+  # def destroy
+  #   invoice = Invoice.find(params[:id])
+  #   invoice.delete if invoice
+  #   redirect_to invoices_path, notice: 'Invoice removed.'
+  # end
 end

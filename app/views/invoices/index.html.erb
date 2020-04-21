@@ -5,21 +5,20 @@
 <table>
   <thead>
     <tr>
+      <th>Date</th>
       <th>Customer</th>
       <th>Invoice No.</th>
-      <th>Date</th>
-      <th>Function</th>
+      <th>Detail</th>
     </tr>
   </thead>
 
   <tbody>
    <% @invoices.each do |invoice| %>
     <tr>
+      <td><%= invoice.date.strftime("%Y-%m-%d") %></td>
       <td><%= invoice.customer %></td>
       <td><%= invoice.invoice_no %></td>
-      <td><%= invoice.date.strftime("%Y-%m-%d") %></td>
-      <td> <%= link_to 'Edit',  edit_invoice_path(invoice) %></td>
-      <td> <%= link_to 'Delete', invoice_path(invoice), method: :delete, data: {confirm: 'Sure to delete this?'} %></td>
+      <td><%= link_to 'Info', invoice_path(invoice) %></td>
     </tr>
     <% end %>
   </tbody>
