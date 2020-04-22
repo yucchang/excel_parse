@@ -24,17 +24,18 @@ class ImportInvoice
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      invoice = Invoice.find_by_id(row["id"]) || Invoice.new
-      invoice.attributes = row
+      invoice = Invoice.find_by(PSN: row["PSN"]) || Invoice.new
+      invoice.attributes = row.to_hash
       invoice
     end
   end
 
   def imported_invoices
-    @imported_invoices || load_imported_invoices
+    @imported_invoices ||= load_imported_invoices
   end
 
   def save
+    imported_invoices.each(&:valid?).all?
     imported_invoices.each(&:save!)
   end
 end

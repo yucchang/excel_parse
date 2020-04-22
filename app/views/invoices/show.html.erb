@@ -1,1 +1,39 @@
-<h1>#Show Page</h1>
+<h2 class="text-2xl">Invoice Information</h2>
+
+<table class="table-auto">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="border px-4 py-2">客戶代碼</th>
+      <th class="border px-4 py-2">客戶名稱</th>
+      <th colspan="4" class="border px-4 py-2">地址</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border px-4 py-2"><%= @invoice.customer_code %></td>
+      <td class="border px-4 py-2"><%= @invoice.customer %></td>
+      <td colspan="4" class="border px-4 py-2"><%= @invoice.address %></td>
+    </tr>
+  </tbody>
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="border px-4 py-2">日期</th>
+      <th class="border px-4 py-2">Invoice No.</th>
+      <th class="border px-4 py-2">PSN</th>
+      <th class="border px-4 py-2">件數</th>
+      <th class="border px-4 py-2">管制藥品</th>
+      <th class="border px-4 py-2">冰品</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border px-4 py-2"><%=  @invoice.date.strftime("%Y-%m-%d") %></td>
+      <td class="border px-4 py-2"><%=  @invoice.invoice_no %></td>
+      <td class="border px-4 py-2"><%=  @invoice.PSN %></td>
+      <td class="border px-4 py-2"><%=  @invoice.pieces %></td>
+      <td class="border px-4 py-2"><%=  is_controlled?(@invoice) %></td>
+      <td class="border px-4 py-2"><%=  is_temp_sensitive?(@invoice) %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to 'Back', root_path %>

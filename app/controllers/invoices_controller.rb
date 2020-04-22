@@ -1,14 +1,15 @@
 class InvoicesController < ApplicationController
 
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.order(date: :desc)
     respond_to do |format|
       format.html
     end
   end
 
   def show
-  end 
+    @invoice = Invoice.find(params[:id])
+  end
 
   # def destroy
   #   invoice = Invoice.find(params[:id])
