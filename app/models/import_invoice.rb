@@ -35,7 +35,17 @@ class ImportInvoice
   end
 
   def save
-    imported_invoices.each(&:valid?).all?
-    imported_invoices.each(&:save!)
+    if imported_invoices.each(&:valid?).all?
+      imported_invoices.each(&:save!)
+      byebug
+      true
+    else
+      imported_invoices.each_with_index do |invoice, index|
+        invoice.errors.full_messages.each do |msg|
+         errors.add(:base, "Row#{index + 2}: #{msg}")
+        end
+      end
+      false
+    end
   end
 end
