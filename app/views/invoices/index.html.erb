@@ -1,27 +1,29 @@
-<h1 class="text-3xl">Invoice List</h1>
+<div class="grid grid-col-6 gap-4">
+  <h1 class="col-span-6 text-3xl">Invoice List</h1>
 
-<%= link_to 'Upload excel', new_import_invoice_path %>
+  <%= link_to 'Upload excel', new_import_invoice_path %>
 
-<table class="table-auto text-center">
-  <thead>
-    <tr class="bg-gray-100">
-      <th class="px-4 py-2">Date</th>
-      <th class="px-4 py-2">Customer</th>
-      <th class="px-4 py-2">Invoice No.</th>
-      <th class="px-4 py-2">State</th>
-      <th class="px-4 py-2">Detail</th>
-    </tr>
-  </thead>
+  <table class="table-auto text-center col-span-6">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="px-4 py-2">Date</th>
+        <th class="px-4 py-2">Customer</th>
+        <th class="px-4 py-2">Invoice No.</th>
+        <th class="px-4 py-2">State</th>
+        <th class="px-4 py-2">Detail</th>
+      </tr>
+    </thead>
 
-  <tbody>
-   <% @invoices.each do |invoice| %>
-    <tr>
-      <td class="border px-4 py-2"><%= invoice.date.strftime("%Y-%m-%d") %></td>
-      <td class="border px-4 py-2"><%= invoice.customer %></td>
-      <td class="border px-4 py-2"><%= invoice.invoice_no %></td>
-      <td class="border px-4 py-2"><%= invoice.state %></td>
-      <td class="border px-4 py-2"><%= link_to 'Info', invoice_path(invoice) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+     <% @invoices.each do |invoice| %>
+      <tr>
+        <td class="border px-4 py-2"><%= invoice.date.strftime("%Y-%m-%d") %></td>
+        <td class="border px-4 py-2"><%= invoice.customer %></td>
+        <td class="border px-4 py-2"><%= invoice.invoice_no %></td>
+        <td class="border px-4 py-2"><%= invoice.state %></td>
+        <td class="border px-4 py-2"><%= link_to 'Info', invoice_path(invoice) %></td>
+      </tr>
+     <% end %>
+    </tbody>
+  </table>
+</div>

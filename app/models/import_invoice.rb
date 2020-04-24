@@ -5,7 +5,9 @@ class ImportInvoice
   attr_accessor :file
 
   def initialize(attributes={})
-    attributes.each { |name, value| send("#{name}=", value) }
+    attributes.each do |name, value|
+      send("#{name}=", value)
+    end
   end
 
   def persisted?
@@ -37,7 +39,6 @@ class ImportInvoice
   def save
     if imported_invoices.each(&:valid?).all?
       imported_invoices.each(&:save!)
-      byebug
       true
     else
       imported_invoices.each_with_index do |invoice, index|
