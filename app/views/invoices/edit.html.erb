@@ -1,12 +1,13 @@
 <h2 class="text-2xl">Invoice Information</h2>
 
+<%= form_for @invoice do |f| %>
 <table class="table-auto text-center">
   <thead>
     <tr class="bg-gray-200">
       <th class="border px-4 py-2">客戶代碼</th>
       <th class="border px-4 py-2">客戶名稱</th>
       <th colspan="3" class="border px-4 py-2">地址</th>
-      <th class="border px-4 py-2">狀態</th>
+      <th class="border px-4 py-2"> <%= f.label :state, '狀態' %></th>
     </tr>
   </thead>
   <tbody>
@@ -14,7 +15,7 @@
       <td class="border px-4 py-2"><%= @invoice.customer_code %></td>
       <td class="border px-4 py-2"><%= @invoice.customer %></td>
       <td colspan="3" class="border px-4 py-2"><%= @invoice.address %></td>
-      <td class="border px-4 py-2"><%= @invoice.state %></td>
+      <td class="border px-4 py-2"><%= f.select :state, Invoice.states.keys %></td>
     </tr>
   </tbody>
   <thead>
@@ -38,4 +39,5 @@
     </tr>
   </tbody>
 </table>
-<%= link_to 'Back', root_path %>
+<%= f.submit '更新' %>
+<% end %>

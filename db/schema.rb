@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_073249) do
+ActiveRecord::Schema.define(version: 2020_04_24_094253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_073249) do
     t.integer "pieces"
     t.boolean "controlled", default: false, null: false
     t.boolean "temp_sensitive", default: false, null: false
-    t.string "state"
+    t.string "state", default: "open"
   end
 
 end
